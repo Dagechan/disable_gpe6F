@@ -1,5 +1,5 @@
 # disable_gpe6F
-When using Linux distros, my laptop always has acpi issues and it causes high cpu usage. This script is for fixing the cpu usage issues.
+When using Linux distros, my laptop always has acpi issues and it causes high cpu usage. These scripts are for fixing the cpu usage issues.
 
 ## How to use
 Put disable_gpe6F.sh in `/usr/local/bin/` and allow to execute it with
