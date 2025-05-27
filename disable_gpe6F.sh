@@ -1,18 +1,28 @@
 #!/bin/bash
 
 GPE_FILE="/sys/firmware/acpi/interrupts/gpe6F"
-MAX_RETRIES=10
-RETRY_INTERVAL=1
 
-for i in $(seq 1 $MAX_RETRIES); do
-    if echo disable | tee "$GPE_FILE" > /dev/null 2>/dev/null; then
-	echo "GPE6F disable successfully."
-	exit 0
-    else
-	echo "Attempt $i: Failed to disable GPE6F, retrying in $RETRY_INTERVAL seconds..."
-        sleep $RETRY_INTERVAL
-    fi
-done
+disable_gpe() {
+    echo "Trying to disable $GPE_FILE..."
+    echo disable | tee "$GPE_FILE" > /dev/null 2>/dev/null
+}
 
-echo "Failed to disable GPE6F after $MAX_RETRIES attempts."
-exit 1
+# Try immediately
+disable_gpe
+
+# Wait and retry after 10 seconds
+sleep 10
+disable_gpe
+
+# Wait and retry after 30 seconds (total ~40s after boot)
+sleep 20
+disable_gpe
+
+# Final check
+if grep -q "disabled" "$GPE_FILE"; then
+    echo "GPE6F is now disabled. Success."
+    exit 0
+else
+    echo "GPE6F is still enabled. Failure."
+    exit 1
+fi
