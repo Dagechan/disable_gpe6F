@@ -7,7 +7,7 @@ Put disable_gpe6F.sh in `/usr/local/bin/` and allow to execute it with
 $ sudo chmod +x /usr/local/bin/disable_gpe6F.sh
 ```
 
-Put disable_gpe6F.service in `/etc/systemd/system/` and execute following commands below.
+Put disable_gpe6F.service in `/etc/systemd/system/` and execute commands below.
 ```
 $ sudo systemctl daemon-reexec
 $ sudo systemctl enable disable-gpe6F.service
