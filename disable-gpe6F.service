@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable GPE6F on boot and after delays
+After=multi-user.target
+ConditionPathExists=/sys/firmware/acpi/interrupts/gpe6F
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/disable_gpe6F.sh
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
