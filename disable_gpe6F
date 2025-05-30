@@ -1,0 +1,7 @@
+#!/bin/bash
+
+case "$1" in
+  post)
+    /usr/local/bin/disable_gpe6F.sh
+    ;;
+esac
