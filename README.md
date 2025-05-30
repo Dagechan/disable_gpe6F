@@ -9,7 +9,7 @@ $ sudo chmod +x /usr/local/bin/disable_gpe6F.sh
 
 Put disabe_gpe6F in `/lib/systemd/system-sleep/` and allow to execute it with
 ```
-sudo chmod +x /lib/systemd/system-sleep/disable_gpe6F
+$ sudo chmod +x /lib/systemd/system-sleep/disable_gpe6F
 ```
 
 Put disable-gpe6F.service in `/etc/systemd/system/` and execute commands below.
